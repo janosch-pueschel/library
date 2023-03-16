@@ -1,0 +1,10 @@
+.book-card {
+    display: flex;
+    justify-content: space-between;
+    border: black solid;
+}
+
+.book-card p {
+    width: 25%;
+    text-align: center;
+}
