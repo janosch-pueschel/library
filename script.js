@@ -23,16 +23,6 @@ function createNewBook() {
   displayBooks();
 }
 
-function createNewBook() {
-  let title = prompt("Book-Title:");
-  let author = prompt("Author:");
-  let pages = prompt("Pages:");
-  let read = prompt("Read:");
-  let newBook = new Book(title, author, pages, read);
-  addBookToLibrary(newBook);
-  displayBooks();
-}
-
 const addBookBtn = document.getElementById("add-btn");
 addBookBtn.addEventListener("click", createNewBook);
 
@@ -50,3 +40,10 @@ function displayBooks() {
     }
   }
 }
+
+const newBookForm = document.getElementById("new-book-form");
+const formBtn = document.getElementById("form-btn");
+
+formBtn.addEventListener("click", function () {
+  newBookForm.style.display = "grid";
+});
