@@ -7,26 +7,7 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
-let myLibrary = [
-  {
-    title: "Title1",
-    author: "Author1",
-    pages: 244,
-    read: "not read",
-  },
-  {
-    title: "Title2",
-    author: "Author2",
-    pages: 123,
-    read: "read",
-  },
-  {
-    title: "Title3",
-    author: "Author3",
-    pages: 587,
-    read: "not read",
-  },
-];
+let myLibrary = [];
 
 function addBookToLibrary(book) {
   myLibrary.push(book);
@@ -39,6 +20,7 @@ function createNewBook() {
   let read = prompt("Read:");
   let newBook = new Book(title, author, pages, read);
   addBookToLibrary(newBook);
+  displayBooks();
 }
 
 function createNewBook() {
@@ -48,23 +30,23 @@ function createNewBook() {
   let read = prompt("Read:");
   let newBook = new Book(title, author, pages, read);
   addBookToLibrary(newBook);
+  displayBooks();
 }
 
 const addBookBtn = document.getElementById("add-btn");
 addBookBtn.addEventListener("click", createNewBook);
 
-
 // function to display all books of myLibrary
 
+const containerEl = document.getElementById("container");
+
 function displayBooks() {
-  for (let books of myLibrary) {
+  for (let i = myLibrary.length - 1; i < myLibrary.length; i++) {
     const bookCard = document.createElement("div");
     bookCard.classList.add("book-card");
-    document.getElementById("container").appendChild(bookCard);
-    for (let key in books) {
-      bookCard.innerHTML += `<p>${books[key]}</p>`;
+    containerEl.insertBefore(bookCard, containerEl.firstChild);
+    for (let key in myLibrary[i]) {
+      bookCard.innerHTML += `<p>${myLibrary[i][key]}</p>`;
     }
   }
 }
-
-displayBooks();
