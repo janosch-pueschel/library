@@ -14,17 +14,19 @@ function addBookToLibrary(book) {
 }
 
 function createNewBook() {
-  let title = prompt("Book-Title:");
-  let author = prompt("Author:");
-  let pages = prompt("Pages:");
-  let read = prompt("Read:");
+  let title = document.getElementById("book-title").value;
+  let author = document.getElementById("book-author").value;
+  let pages = document.getElementById("book-pages").value;
+  let read = document.getElementById("book-read").value;
   let newBook = new Book(title, author, pages, read);
   addBookToLibrary(newBook);
   displayBooks();
 }
 
 const addBookBtn = document.getElementById("add-btn");
-addBookBtn.addEventListener("click", createNewBook);
+addBookBtn.addEventListener("click", () => {
+  createNewBook();
+});
 
 // function to display all books of myLibrary
 
