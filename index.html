@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <title>Library</title>
-</head>
-<body>
-    <div id="container">
-
-    </div>
+  </head>
+  <body>
+    <div id="container"></div>
     <button id="add-btn">Add Book</button>
+
+    <form action="" class="container__form">
+      <label for="book-title"> Title </label>
+      <input id="book-title" type="text" />
+      <label for="book-author"> Author </label>
+      <input id="book-author" type="text" />
+      <label for="book-pages"> Pages </label>
+      <input id="book-pages" type="text" />
+      <label for="book-read"> Read? </label>
+      <input id="book-read" type="checkbox" />
+      <button>Submit</button>
+    </form>
+
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
