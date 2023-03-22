@@ -54,9 +54,19 @@ function displayBooks() {
     for (let key in books) {
       bookCard.innerHTML += `<p>${books[key]}</p>`;
     }
-    bookCard.innerHTML += `<input type="checkbox">`;
     bookCard.innerHTML += `<button class="delete-btn">Delete</button>`;
+
+    bookCard.innerHTML += `<input type="checkbox" id="read-status" class="read-status-checkbox">`;
+    let readStatus = document.getElementById("read-status");
+    if (books.read === "already read") {
+      readStatus.checked = true;
+      console.log("book is read");
+    } else if (books.read === "not read yet") {
+      readStatus.checked = false;
+      console.log("book is not read");
+    }
   }
+  updateReadStatus();
   displayDeleteBtn();
 }
 
@@ -83,3 +93,23 @@ function displayDeleteBtn() {
 
 // ToDos
 // - read-btn for each book to update status of read
+
+function updateReadStatus() {
+  const readStatusCheckbox = document.getElementsByClassName(
+    "read-status-checkbox"
+  );
+
+  for (let i = 0; i < readStatusCheckbox.length; i++) {
+    readStatusCheckbox[i].addEventListener("click", () => {
+      console.log("works");
+      let libraryIndex =
+        readStatusCheckbox[i].parentNode.getAttribute("data-library-index");
+      if (myLibrary[libraryIndex]["read"] === "already read") {
+        myLibrary[libraryIndex]["read"] = "not read yet";
+      } else if (myLibrary[libraryIndex]["read"] === "not read yet") {
+        myLibrary[libraryIndex]["read"] = "already read";
+      }
+      displayBooks();
+    });
+  }
+}
