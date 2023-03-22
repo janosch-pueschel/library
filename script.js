@@ -29,9 +29,14 @@ function createNewBook() {
   displayBooks();
 }
 
+function closeForm() {
+  newBookForm.style.display = "none";
+}
+
 const addBookBtn = document.getElementById("add-btn");
 addBookBtn.addEventListener("click", () => {
   createNewBook();
+  closeForm();
 });
 
 // function to display all books of myLibrary
@@ -49,6 +54,7 @@ function displayBooks() {
     for (let key in books) {
       bookCard.innerHTML += `<p>${books[key]}</p>`;
     }
+    bookCard.innerHTML += `<input type="checkbox">`;
     bookCard.innerHTML += `<button class="delete-btn">Delete</button>`;
   }
   displayDeleteBtn();
