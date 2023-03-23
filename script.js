@@ -13,12 +13,17 @@ function addBookToLibrary(book) {
   myLibrary.push(book);
 }
 
+const bookTitle = document.getElementById("book-title");
+const bookAuthor = document.getElementById("book-author");
+const bookPages = document.getElementById("book-pages");
+const bookRead = document.getElementById("book-read");
+
 function createNewBook() {
-  let title = document.getElementById("book-title").value;
-  let author = document.getElementById("book-author").value;
-  let pages = document.getElementById("book-pages").value;
+  let title = bookTitle.value;
+  let author = bookAuthor.value;
+  let pages = bookPages.value;
   let read;
-  if (document.getElementById("book-read").checked === true) {
+  if (bookPages.checked === true) {
     read = "read";
   } else {
     read = "not read";
@@ -27,6 +32,11 @@ function createNewBook() {
   let newBook = new Book(title, author, pages, read);
   addBookToLibrary(newBook);
   displayBooks();
+
+  bookTitle.value = "";
+  bookAuthor.value = "";
+  bookPages.value = "";
+  bookRead.checked = false;
 }
 
 function closeForm() {
