@@ -8,21 +8,42 @@
     <title>Library</title>
   </head>
   <body>
-    <div id="container"></div>
-    <button id="form-btn">Add Book</button>
+    <div class="overlay">
+      <div class="wrapper">
+        <header>
+          <h1>My Book Library</h1>
+          <p>
+            Simple library app built as part of
+            <a
+              href="https://www.theodinproject.com/lessons/node-path-javascript-library"
+              target="_blank"
+              >The Odin Project</a
+            >.
+          </p>
+          <button id="form-btn" class="button">Add Book</button>
+        </header>
 
+        <div class="book-header">
+          <p>Title</p>
+          <p>Author</p>
+          <p>Pages</p>
+          <p>Status</p>
+        </div>
+
+        <main id="container" class="main-container"></main>
+      </div>
+    </div>
     <form action="" class="container__form" id="new-book-form">
-      <label for="book-title"> Title </label>
-      <input id="book-title" type="text" />
-      <label for="book-author"> Author </label>
-      <input id="book-author" type="text" />
-      <label for="book-pages"> Pages </label>
-      <input id="book-pages" type="number" />
-      <label for="book-read"> Read? </label>
-      <input id="book-read" type="checkbox" />
-      <button type="button" id="add-btn">Submit</button>
+      <label for="book-title">Title</label>
+      <input id="book-title" type="text" class="form__input" />
+      <label for="book-author">Author</label>
+      <input id="book-author" type="text" class="form__input" />
+      <label for="book-pages">Pages</label>
+      <input id="book-pages" type="number" class="form__input" />
+      <label for="book-read">Read?</label>
+      <input id="book-read" type="checkbox" class="form__input" />
+      <button type="button" id="add-btn" class="button">Submit</button>
     </form>
-
     <script src="script.js"></script>
   </body>
 </html>

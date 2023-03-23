@@ -19,9 +19,9 @@ function createNewBook() {
   let pages = document.getElementById("book-pages").value;
   let read;
   if (document.getElementById("book-read").checked === true) {
-    read = "already read";
+    read = "read";
   } else {
-    read = "not read yet";
+    read = "not read";
   }
 
   let newBook = new Book(title, author, pages, read);
@@ -52,18 +52,23 @@ function displayBooks() {
     bookCard.setAttribute("data-library-index", `${myLibrary.indexOf(books)}`);
     containerEl.insertBefore(bookCard, containerEl.firstChild);
     for (let key in books) {
-      bookCard.innerHTML += `<p>${books[key]}</p>`;
+      if (key == "read") {
+        bookCard.innerHTML += `<div class="read-status-container">
+        <p>${books[key]}</p>
+        <input type="checkbox" id="read-status" class="read-status-checkbox">
+        </div>`;
+      } else {
+        bookCard.innerHTML += `<p>${books[key]}</p>`;
+      }
     }
-    bookCard.innerHTML += `<button class="delete-btn">Delete</button>`;
+   
+    bookCard.innerHTML += `<button class="delete-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z" /></svg></button>`;
 
-    bookCard.innerHTML += `<input type="checkbox" id="read-status" class="read-status-checkbox">`;
     let readStatus = document.getElementById("read-status");
-    if (books.read === "already read") {
+    if (books.read === "read") {
       readStatus.checked = true;
-      console.log("book is read");
-    } else if (books.read === "not read yet") {
+    } else if (books.read === "not read") {
       readStatus.checked = false;
-      console.log("book is not read");
     }
   }
   updateReadStatus();
@@ -91,9 +96,6 @@ function displayDeleteBtn() {
   }
 }
 
-// ToDos
-// - read-btn for each book to update status of read
-
 function updateReadStatus() {
   const readStatusCheckbox = document.getElementsByClassName(
     "read-status-checkbox"
@@ -101,15 +103,22 @@ function updateReadStatus() {
 
   for (let i = 0; i < readStatusCheckbox.length; i++) {
     readStatusCheckbox[i].addEventListener("click", () => {
-      console.log("works");
       let libraryIndex =
-        readStatusCheckbox[i].parentNode.getAttribute("data-library-index");
-      if (myLibrary[libraryIndex]["read"] === "already read") {
-        myLibrary[libraryIndex]["read"] = "not read yet";
-      } else if (myLibrary[libraryIndex]["read"] === "not read yet") {
-        myLibrary[libraryIndex]["read"] = "already read";
+        readStatusCheckbox[i].parentNode.parentNode.getAttribute("data-library-index");
+      if (myLibrary[libraryIndex]["read"] === "read") {
+        myLibrary[libraryIndex]["read"] = "not read";
+      } else if (myLibrary[libraryIndex]["read"] === "not read") {
+        myLibrary[libraryIndex]["read"] = "read";
       }
       displayBooks();
     });
   }
 }
+
+
+/* 
+- Overlay
+- input fields to be required
+- button-hover
+
+*/
